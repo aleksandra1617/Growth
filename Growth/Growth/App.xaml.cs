@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using System.Windows;
 using Growth.Utilities;
 using System;
+using System.Text;
 
 namespace Growth
 {
@@ -12,9 +13,12 @@ namespace Growth
     /// </summary>
     public partial class App : Application
     {
+        private readonly IHost _host;
+        private readonly ILogger<App> _logger;
+
         public App()
         {
-            using IHost host = Host.CreateDefaultBuilder()
+            _host = Host.CreateDefaultBuilder()
                 .ConfigureLogging((context, logging) =>
                 {
                     logging.ClearProviders();
@@ -24,11 +28,19 @@ namespace Growth
                 })
                 .Build();
 
-            ILoggerFactory loggerFactory = host.Services.GetRequiredService<ILoggerFactory>();
-            ILogger<App> logger = loggerFactory.CreateLogger<App>();
+            ILoggerFactory loggerFactory = _host.Services.GetRequiredService<ILoggerFactory>();
+            _logger = loggerFactory.CreateLogger<App>();
 
-            using (logger.BeginScope("Logging scope"))
-                logger.LogInformation("Exiting App Constructor!");
+            using (_logger.BeginScope("Logging scope"))
+                _logger.LogInformation("Exiting App Constructor!");
+        }
+
+        private void OnAppUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            string exMsg = $"An unhandled exception occured: {e.Exception.Message}";
+            _logger.LogError(exMsg, sender.GetType());
+            MessageBox.Show(exMsg);
+            e.Handled = true;
         }
     }
 }
