@@ -3,7 +3,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Windows;
 using Growth.Utilities;
-
+using System;
 
 namespace Growth
 {
@@ -15,14 +15,14 @@ namespace Growth
         public App()
         {
             using IHost host = Host.CreateDefaultBuilder()
-           .ConfigureLogging((context, logging) =>
-           {
-               logging.ClearProviders();
-               logging.AddConfiguration(context.Configuration.GetSection("Logging"));
-               logging.AddDebug();
-               logging.AddConsole().AddConsoleFormatter<TimePrefixConsoleFormatter, ConsoleFormatterOptionsWrapper>();
-           })
-           .Build();
+                .ConfigureLogging((context, logging) =>
+                {
+                    logging.ClearProviders();
+                    logging.AddConfiguration(context.Configuration.GetSection("Logging"));
+                    logging.AddDebug();
+                    logging.AddConsole().AddConsoleFormatter<TimePrefixConsoleFormatter, ConsoleFormatterOptionsWrapper>();
+                })
+                .Build();
 
             ILoggerFactory loggerFactory = host.Services.GetRequiredService<ILoggerFactory>();
             ILogger<App> logger = loggerFactory.CreateLogger<App>();
