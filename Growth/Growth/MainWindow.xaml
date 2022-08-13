@@ -5,29 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Growth"
         mc:Ignorable="d"
-        DataContext="Growth.Viewmodels.MainViewModel"
-        Title="MainWindow" Height="500" Width="800">
+        Title="Growth" Height="500" Width="800">
 
-    <Window.Resources>
-        <!-- Defining a base button style for the whole window. -->
-        <Style TargetType="Button">
-            <Setter Property="Background" Value="Aquamarine"/>
-        </Style> 
-    </Window.Resources>
-    
-    <Grid Margin="5,2">
+    <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
-        <StackPanel Grid.Column="0" Width="80">
-            <Button Content="Home" Style="{StaticResource MenuButtonStyle}"/>
-            <Button Content="Moments" Style="{StaticResource MenuButtonStyle}"/>
-            <Button Content="Projects" Style="{StaticResource MenuButtonStyle}"/>
-            <Button Content="Goals" Style="{StaticResource MenuButtonStyle}"/>
-            <Button Content="Tasks" Style="{StaticResource MenuButtonStyle}"/>
-            <Button Content="Notes" Style="{StaticResource MenuButtonStyle}"/>
-        </StackPanel>
     </Grid>
 </Window>
