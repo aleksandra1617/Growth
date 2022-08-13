@@ -15,9 +15,12 @@ namespace Growth
         public App()
         {
             using IHost host = Host.CreateDefaultBuilder()
-           .ConfigureLogging(builder =>
+           .ConfigureLogging((context, logging) =>
            {
-               builder.AddConsole().AddConsoleFormatter<TimePrefixConsoleFormatter, ConsoleFormatterOptionsWrapper>();
+               logging.ClearProviders();
+               logging.AddConfiguration(context.Configuration.GetSection("Logging"));
+               logging.AddDebug();
+               logging.AddConsole().AddConsoleFormatter<TimePrefixConsoleFormatter, ConsoleFormatterOptionsWrapper>();
            })
            .Build();
 
