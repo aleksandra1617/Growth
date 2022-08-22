@@ -3,6 +3,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Windows;
 using Growth.Utilities;
+using Growth.ViewModels;
 
 namespace Growth;
 
@@ -20,6 +21,7 @@ public partial class App : Application
             .ConfigureServices((hostContext, services) =>
             {
                 services.AddSingleton<MainWindow>();
+                services.AddSingleton<MainVM>();
             })
             .ConfigureLogging((context, logging) =>
             {

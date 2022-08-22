@@ -7,9 +7,11 @@ namespace Growth
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(ViewModels.MainVM mainVM)
         {
             InitializeComponent();
+
+            DataContext = mainVM;
         }
     }
 }
