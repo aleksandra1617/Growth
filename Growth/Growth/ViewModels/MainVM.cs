@@ -16,6 +16,6 @@ public class MainVM : ViewModelBase
         _dataAccess = dataAccess;
 
 
-        _logger.LogInformation("<<MainVM>> Constructed Successfully.");
+        _logger.LogDebug("<<MainVM>> Constructed Successfully.");
     }
 }

@@ -17,7 +17,7 @@ namespace Growth
             DataContext = mainVM;
             _dataAccess = dataAccess;
 
-            logger.LogInformation("<<MainWindow>> Constructed Successfully.");
+            logger.LogDebug("<<MainWindow>> Constructed Successfully.");
         }
 
         private void GetDataBtn_Click(object sender, RoutedEventArgs e)
