@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Growth"
-        mc:Ignorable="d"
+        mc:Ignorable="d" FontSize="14"
         Title="Growth" Height="500" Width="800">
 
     <Grid Margin="10">
@@ -12,5 +12,13 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="GetTestDataBtn" Content="Get Data" 
+                Grid.Column="0" Grid.Row="0" MinWidth="100" MinHeight="50" Padding="20, 10" Click="GetDataBtn_Click"/>
+        <TextBlock x:Name="TestDataBlock" Grid.Column="1" Grid.Row="1" Background="AliceBlue"/>
     </Grid>
 </Window>

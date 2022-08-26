@@ -2,8 +2,10 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Windows;
+
 using Growth.Utilities;
 using Growth.ViewModels;
+using DataAccess;
 
 namespace Growth;
 
@@ -22,6 +24,7 @@ public partial class App : Application
             {
                 services.AddSingleton<MainWindow>();
                 services.AddSingleton<MainVM>();
+                services.AddTransient<IDataAccess, SQLiteDataAccess>();
             })
             .ConfigureLogging((context, logging) =>
             {
